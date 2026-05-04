@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض الأصناف - نظام المستودع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-boxes"></i> جميع أصناف المستودع</h1>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> الرئيسية</a>
+            
+            <div class="header-actions">
+                <a href="add_product.html" class="back-btn">
+                    <i class="fas fa-plus"></i> إضافة صنف
+                </a>
+                <a href="sell.html" class="back-btn">
+                    <i class="fas fa-shopping-cart"></i> بيع
+                </a>
+            </div>
+        </header>
+
+        <div class="form-container">
+            <div class="table-controls">
+                <div class="table-actions">
+                    <button class="btn-export" onclick="exportData()">
+                        <i class="fas fa-download"></i> تصدير البيانات
+                    </button>
+                    <button class="btn-import" onclick="importData()">
+                        <i class="fas fa-upload"></i> استيراد بيانات
+                    </button>
+                    <button class="btn-submit" onclick="checkLowStock()">
+                        <i class="fas fa-exclamation-triangle"></i> فحص المخزون
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-controls">
+                <div class="table-actions">
+                    <input type="text" id="productSearchInput" placeholder="ابحث عن صنف..." oninput="filterProducts()">
+                    <select id="productSortSelect" onchange="filterProducts()">
+                        <option value="name">ترتيب حسب الاسم</option>
+                        <option value="stock">ترتيب حسب المخزون</option>
+                        <option value="purchasePrice">ترتيب حسب سعر الشراء</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم الصنف</th>
+                        <th>الربطات</th>
+                        <th>أكياس/ربطة</th>
+                        <th>سعر الشراء</th>
+                        <th>آخر سعر بيع</th>
+                        <th>المخزون</th>
+                        <th>قيمة الشراء</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <!-- سيتم ملؤها بالبيانات -->
+                </tbody>
+            </table>
+            
+            <div class="table-summary">
+                <div class="summary-item">
+                    <span>عدد الأصناف:</span>
+                    <strong id="totalProductsCount">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>إجمالي المخزون:</span>
+                    <strong id="totalStockCount">0 ربطة</strong>
+                </div>
+                <div class="summary-item">
+                    <span>قيمة المخزون:</span>
+                    <strong id="totalStockValue">0 ل.س</strong>
+                </div>
+            </div>
+            
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-box-open"></i>
+                <h3>لا توجد أصناف في المستودع</h3>
+                <p>أضف أصنافاً أولاً من صفحة "إضافة صنف جديد"</p>
+                <a href="add_product.html" class="btn-submit">إضافة صنف جديد</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

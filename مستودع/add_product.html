@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة صنف جديد - نظام المستودع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-plus-circle"></i> إضافة صنف جديد للمستودع</h1>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+        </header>
+
+        <div class="form-container">
+            <form id="addProductForm">
+                <div class="form-group">
+                    <label for="productName"><i class="fas fa-tag"></i> اسم الصنف</label>
+                    <input type="text" id="productName" placeholder="مثال: سكر 1 كغ" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bundles"><i class="fas fa-layer-group"></i> عدد الربطات</label>
+                        <input type="number" id="bundles" min="1" value="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bagsPerBundle"><i class="fas fa-box"></i> عدد الأكياس في الربطة</label>
+                        <input type="number" id="bagsPerBundle" min="1" value="50" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="purchasePrice"><i class="fas fa-shopping-cart"></i> سعر الشراء للكيس (ليرة)</label>
+                    <input type="number" id="purchasePrice" step="0.01" min="0" value="700" required>
+                </div>
+
+                <div class="calculations-preview">
+                    <h3><i class="fas fa-calculator"></i> الحسابات التلقائية:</h3>
+                    <div class="calc-results">
+                        <div class="calc-item">
+                            <span>إجمالي الأكياس:</span>
+                            <strong id="totalBags">0</strong>
+                        </div>
+                        <div class="calc-item">
+                            <span>تكلفة الشراء الإجمالية:</span>
+                            <strong id="totalPurchase">0 ل.س</strong>
+                        </div>
+                        <div class="calc-item">
+                            <span>ملاحظة:</span>
+                            <strong style="color: #e74c3c;">سيتم تحديد سعر البيع عند عملية البيع</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i> حفظ الصنف
+                    </button>
+                    <button type="button" class="btn-reset" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> تفريغ الحقول
+                    </button>
+                    <button type="button" class="btn-export" onclick="exportData()">
+                        <i class="fas fa-download"></i> تصدير
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل عملية بيع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+<div class="sell-container">
+
+    <!-- ======= الشريط العلوي ======= -->
+    <header class="sell-header">
+        <a href="index.html" class="sell-back"><i class="fas fa-arrow-right"></i></a>
+        <h1><i class="fas fa-cash-register"></i> تسجيل عملية بيع</h1>
+    </header>
+
+    <!-- ======= شريط التقدم ======= -->
+    <div class="sell-steps-bar">
+        <div class="step-item active" id="stepBar1">اختيار الصنف</div>
+        <div class="step-item" id="stepBar2">الكمية</div>
+        <div class="step-item" id="stepBar3">التسعير</div>
+    </div>
+
+    <div class="sell-content">
+
+        <!-- ======= القسم الأيسر: المنتجات ======= -->
+        <div class="sell-left">
+
+            <!-- البحث -->
+            <div class="sell-search-box">
+                <input type="text" id="productSearch" placeholder="ابحث عن صنف..." onkeyup="searchProducts()">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <!-- شبكة المنتجات -->
+            <div class="sell-products-grid" id="productsGrid">
+                <div class="loading">جاري تحميل الأصناف...</div>
+            </div>
+
+        </div>
+
+        <!-- ======= القسم الأيمن: ملخص البيع ======= -->
+        <div class="sell-right">
+
+            <!-- بطاقة الصنف المختار -->
+            <div class="sell-card" id="selectedProductCard">
+                <p class="empty-text">اختر صنفاً من القائمة</p>
+            </div>
+
+            <!-- التحكم بالكمية -->
+            <div class="sell-card">
+                <h3><i class="fas fa-balance-scale"></i> الكمية</h3>
+
+                <div class="sell-qty-box">
+                    <button onclick="changeQuantity(-1)"><i class="fas fa-minus"></i></button>
+                    <input type="number" id="bundlesToSell" value="1" min="1">
+                    <button onclick="changeQuantity(1)"><i class="fas fa-plus"></i></button>
+                </div>
+
+                <div class="sell-qty-info">
+                    <span>المتاح: <strong id="availableBundles">0</strong> ربطة</span>
+                    <span>الأكياس: <strong id="totalBagsPreview">0</strong></span>
+                </div>
+            </div>
+
+            <!-- التسعير -->
+            <div class="sell-card">
+                <h3><i class="fas fa-tag"></i> سعر البيع</h3>
+
+                <div class="sell-price-suggestions">
+                    <button onclick="useSuggestedPrice(20)">ربح 20%</button>
+                    <button onclick="useSuggestedPrice(25)">ربح 25%</button>
+                    <button onclick="useSuggestedPrice(30)">ربح 30%</button>
+                </div>
+
+                <div class="sell-price-input">
+                    <input type="number" id="customSalePrice" placeholder="أدخل السعر يدوياً" oninput="updateProfitPreview()">
+                    <span>ل.س</span>
+                </div>
+
+                <div class="sell-profit" id="profitPreview">
+                    الربح المتوقع: 0 ل.س (0%)
+                </div>
+            </div>
+
+            <!-- معلومات العميل -->
+            <div class="sell-card">
+                <h3><i class="fas fa-user"></i> العميل (اختياري)</h3>
+                <input type="text" id="customerName" placeholder="اسم العميل">
+                <input type="text" id="customerPhone" placeholder="رقم الهاتف">
+            </div>
+
+            <!-- زر التأكيد -->
+            <button class="sell-confirm-btn" onclick="document.getElementById('sellForm').requestSubmit()">
+                <i class="fas fa-check"></i> تأكيد البيع
+            </button>
+
+        </div>
+
+    </div>
+
+    <form id="sellForm" onsubmit="confirmSale(event)"></form>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

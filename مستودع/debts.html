@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الديون / الذمم المالية - نظام المستودع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-file-invoice-dollar"></i> الديون / الذمم المالية</h1>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> الرئيسية</a>
+        </header>
+
+        <div class="form-container">
+            <div class="table-controls">
+                <div class="table-actions">
+                    <button class="btn-export" onclick="exportData()">
+                        <i class="fas fa-download"></i> تصدير البيانات
+                    </button>
+                </div>
+            </div>
+
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>اسم العميل</th>
+                        <th>الهاتف</th>
+                        <th>الصنف</th>
+                        <th>المبلغ</th>
+                        <th>التاريخ</th>
+                        <th>الحالة</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="debtsTableBody">
+                    <!-- سيتم ملؤها بالبيانات -->
+                </tbody>
+            </table>
+
+            <div class="empty-state" id="debtsEmptyState" style="display: none;">
+                <i class="fas fa-smile"></i>
+                <h3>لا توجد ديون مسجلة</h3>
+                <p>كل شيء مسدد حتى الآن</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', loadDebtsTable);
+    </script>
+</body>
+</html>

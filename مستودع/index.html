@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام محاسبة المستودع</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-warehouse"></i> نظام محاسبة المستودع</h1>
+            <p class="subtitle">إدارة المخزون والمبيعات والأرباح بسهولة</p>
+
+            <div class="header-menu">
+                <a href="debts.html" class="header-menu-item" title="الديون / الذمم">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </a>
+                <a href="products.html" class="header-menu-item" title="الأصناف">
+                    <i class="fas fa-boxes"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="dashboard">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3><i class="fas fa-boxes"></i> الأصناف</h3>
+                    <p id="totalProducts">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> إجمالي الربح</h3>
+                    <p id="totalProfit">0 ل.س</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-shopping-cart"></i> المبيعات</h3>
+                    <p id="totalSales">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-box-open"></i> قيمة المخزون</h3>
+                    <p id="inventoryValue">0 ل.س</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <a href="add_product.html" class="menu-item">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>إضافة صنف جديد</span>
+                </a>
+                <a href="products.html" class="menu-item">
+                    <i class="fas fa-list"></i>
+                    <span>عرض جميع الأصناف</span>
+                </a>
+                <a href="sell.html" class="menu-item">
+                    <i class="fas fa-cash-register"></i>
+                    <span>تسجيل عملية بيع</span>
+                </a>
+                <a href="#" class="menu-item" onclick="showReports()">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="debts.html" class="menu-item">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>الديون / الذمم المالية</span>
+                </a>
+            </nav>
+
+            <div class="recent-activity">
+                <div class="recent-activity-header">
+                    <h3><i class="fas fa-history"></i> آخر العمليات</h3>
+                    <button class="btn-reset btn-small" onclick="clearActivities()">
+                        <i class="fas fa-trash"></i> حذف السجل
+                    </button>
+                </div>
+                <div id="activityLog">
+                    <!-- سيتم ملؤها بالبيانات -->
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p id="footerYear">تم التطوير خصيصًا لمستودعك &copy; 2023</p>
+            <p class="version">الإصدار 2.0 - مع تحديد السعر عند البيع</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
